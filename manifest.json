@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Auto Paste Shortcut",
+  "version": "1.2",
+  "description": "Press Alt+C to paste your stored sentence.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "paste-stored-text": {
+      "suggested_key": {
+        "default": "Alt+C"
+      },
+      "description": "Paste the saved sentence"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png"
+    }
+  }
+}
